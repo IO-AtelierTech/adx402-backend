@@ -1,6 +1,9 @@
 import { relations } from "drizzle-orm/relations";
 
-import { adSlots, clicks, impressions, settlements } from "./ad_interactions"
+import { adSlots } from "./ad_slots";
+import { clicks } from "./clicks";
+import { impressions } from "./impressions";
+import { settlements } from "./settlements";
 import { ads } from "./ads";
 import { brands } from "./brands";
 import { publishers } from "./publishers";

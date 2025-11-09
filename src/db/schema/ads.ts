@@ -1,21 +1,7 @@
 import { sql } from "drizzle-orm"
-import { check, foreignKey, integer, pgTable, text, timestamp, unique, uuid } from "drizzle-orm/pg-core"
+import { check, foreignKey, integer, pgTable, text, timestamp, uuid } from "drizzle-orm/pg-core"
 
 import { brands } from "./brands"
-
-export const aspectRatios = pgTable("aspect_ratios", {
-  id: uuid().defaultRandom().primaryKey().notNull(),
-  aspectRatio: text("aspect_ratio").notNull(),
-}, (table) => [
-  unique("aspect_ratios_aspect_ratio_key").on(table.aspectRatio),
-]);
-
-export const adTags = pgTable("ad_tags", {
-  id: uuid().defaultRandom().primaryKey().notNull(),
-  tag: text().notNull(),
-}, (table) => [
-  unique("ad_tags_tag_key").on(table.tag),
-]);
 
 export const ads = pgTable("ads", {
   id: uuid().defaultRandom().primaryKey().notNull(),
