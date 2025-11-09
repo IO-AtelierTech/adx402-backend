@@ -4,7 +4,7 @@ import env from "./env";
 import logger from "./utils/logger";
 
 const { PORT, APP_ENV } = env;
-const HOST = "0.0.0.0"; // Essential for Cloud Run
+const HOST = APP_ENV === "production" ? "0.0.0.0" : "localhost";
 
 /**
  * Function to explicitly connect to the database pool and verify connectivity.
