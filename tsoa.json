@@ -1,13 +1,14 @@
 {
   "entryFile": "src/server.ts",
   "noImplicitAdditionalProperties": "throw-on-extras",
-  "controllerPathGlobs": ["src/controllers/*Controller.ts"],
+  "controllerPathGlobs": ["./src/controllers/**/*.ts"],
   "spec": {
-    "outputDirectory": "src/generated",
-    "specVersion": 3
+    "outputDirectory": "build",
+    "specVersion": 3,
+    "basePath": "/",
+    "controllerPathGlobs": ["./src/controllers/**/*.ts"]
   },
   "routes": {
-    "routesDir": "src/generated",
-    "esm": true
+    "routesDir": "src"
   }
 }
