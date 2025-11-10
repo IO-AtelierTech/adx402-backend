@@ -44,7 +44,7 @@ app.use(
   }),
 );
 
-app.use(express.json());
+// app.use(express.json());
 
 // Root endpoint
 app.get("/", (req, res) => {
