@@ -31,7 +31,7 @@ COPY --chown=nodejs:nodejs package.json yarn.lock .yarnrc.yml ./
 RUN yarn install --immutable
 
 # Copy only the files needed for the build to optimize caching
-COPY --chown=nodejs:nodejs tsconfig.json tsconfig.node.json tsoa.json ./
+COPY --chown=nodejs:nodejs tsconfig.json tsoa.json ./
 
 # Copy source code
 COPY --chown=nodejs:nodejs src/ ./src/
