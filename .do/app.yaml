@@ -1,40 +1,40 @@
 name: adx402-backend
 services:
-- name: api
-  source_dir: /
-  github:
-    repo: IO-AtelierTech/adx402-backend
-    branch: main
-  run_command: yarn start
-  environment_slug: node-js
-  instance_count: 1
-  instance_size_slug: basic-xxs
-  http_port: 8080
-  routes:
-  - path: /
-  envs:
-  - key: APP_ENV
-    value: production
-  - key: PORT
-    value: "8080"
-  - key: DATABASE_URL
-    type: SECRET
-    value: DATABASE_CONNECTION_STRING
-  - key: MASTER_WALLET
-    value: ATLRgWE846VkW4ydMvVXGcH1HdM2nBaoVUp6oGJu1sfb
+  - name: api
+    source_dir: /
+    github:
+      repo: IO-AtelierTech/adx402-backend
+      branch: main
+    run_command: yarn start
+    environment_slug: node-js
+    instance_count: 1
+    instance_size_slug: basic-xxs
+    http_port: 8080
+    routes:
+      - path: /
+    envs:
+      - key: APP_ENV
+        value: production
+      - key: PORT
+        value: "8080"
+      - key: DATABASE_URL
+        type: SECRET
+        value: DATABASE_CONNECTION_STRING
+      - key: MASTER_WALLET
+        value: ATLRgWE846VkW4ydMvVXGcH1HdM2nBaoVUp6oGJu1sfb
 
 jobs:
-- name: migrate
-  source_dir: /
-  github:
-    repo: IO-AtelierTech/adx402-backend
-    branch: main
-  run_command: yarn migrate:up
-  environment_slug: node-js
-  kind: PRE_DEPLOY
-  envs:
-  - key: APP_ENV
-    value: production
-  - key: DATABASE_URL
-    type: SECRET
-    value: DATABASE_CONNECTION_STRING
+  - name: migrate
+    source_dir: /
+    github:
+      repo: IO-AtelierTech/adx402-backend
+      branch: main
+    run_command: yarn migrate:up
+    environment_slug: node-js
+    kind: PRE_DEPLOY
+    envs:
+      - key: APP_ENV
+        value: production
+      - key: DATABASE_URL
+        type: SECRET
+        value: DATABASE_CONNECTION_STRING
