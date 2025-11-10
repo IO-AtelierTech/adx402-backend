@@ -102,4 +102,6 @@ export type Adx402PaginatedResponse<T> =
 export type PaginatedResult<T> = [T, PaginationInfo];
 
 export type Adx402AsyncResponse<T> = Promise<Adx402Response<T>>;
-export type Adx402AsyncPaginatedResponse<T> = Promise<Adx402PaginatedResponse<T>>;
+export type Adx402AsyncPaginatedResponse<T> = Promise<
+  Adx402PaginatedResponse<T>
+>;

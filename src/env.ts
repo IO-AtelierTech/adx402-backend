@@ -5,9 +5,7 @@ dotenv.config();
 const EnvSchema = z.object({
   APP_ENV: z.enum(["development", "production"], "APP_ENV is required"),
   DATABASE_URL: z.string().min(1, "DATABASE_URL is required"),
-  DATABASE_CERT: z
-    .string()
-    .optional(),
+  DATABASE_CERT: z.string().optional(),
   PORT: z
     .string()
     .min(1, "PORT is required")
@@ -19,7 +17,7 @@ const EnvSchema = z.object({
       return num;
     }),
   MASTER_WALLET: z.string().min(1, "MASTER_WALLET is required"),
-})
+});
 
 const _env = EnvSchema.safeParse(process.env);
 
@@ -29,4 +27,4 @@ if (!_env.success) {
 }
 
 const env = _env.data;
-export default env
+export default env;

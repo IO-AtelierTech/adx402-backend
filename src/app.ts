@@ -1,5 +1,5 @@
 import cookieParser from "cookie-parser";
-import cors from "cors"
+import cors from "cors";
 import type {
   ErrorRequestHandler,
   NextFunction,
@@ -27,7 +27,7 @@ app.use(cookieParser());
 
 app.use(
   cors({
-    origin: (origin, callback) => callback(null, origin || '*'),
+    origin: (origin, callback) => callback(null, origin || "*"),
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"],
     allowedHeaders: [

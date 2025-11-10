@@ -55,7 +55,7 @@ export class PublisherController extends Adx402Controller {
       const adSlot = await db.query.adSlots.findFirst({
         where: and(
           eq(adSlots.slotId, slot),
-          eq(adSlots.publisherId, publisher.id)
+          eq(adSlots.publisherId, publisher.id),
         ),
       });
 
@@ -72,19 +72,17 @@ export class PublisherController extends Adx402Controller {
         gt(ads.creditBalance, 0),
         eq(ads.moderationStatus, "approved"),
         sql`(${ads.startTime} IS NULL OR ${ads.startTime} <= NOW())`,
-        sql`(${ads.endTime} IS NULL OR ${ads.endTime} >= NOW())`
+        sql`(${ads.endTime} IS NULL OR ${ads.endTime} >= NOW())`,
       ];
 
       if (adSlot.aspectRatios && adSlot.aspectRatios.length > 0) {
         whereConditions.push(
-          sql`${ads.aspectRatio} = ANY(${adSlot.aspectRatios})`
+          sql`${ads.aspectRatio} = ANY(${adSlot.aspectRatios})`,
         );
       }
 
       if (adSlot.tags && adSlot.tags.length > 0) {
-        whereConditions.push(
-          sql`${ads.tags} && ${adSlot.tags}`
-        );
+        whereConditions.push(sql`${ads.tags} && ${adSlot.tags}`);
       }
 
       const availableAds = await db
@@ -135,7 +133,7 @@ export class PublisherController extends Adx402Controller {
       const adSlot = await db.query.adSlots.findFirst({
         where: and(
           eq(adSlots.slotId, body.slotId),
-          eq(adSlots.publisherId, publisher.id)
+          eq(adSlots.publisherId, publisher.id),
         ),
       });
 
@@ -318,7 +316,7 @@ export class PublisherController extends Adx402Controller {
       const existingSlot = await db.query.adSlots.findFirst({
         where: and(
           eq(adSlots.slotId, body.slotId),
-          eq(adSlots.publisherId, publisher.id)
+          eq(adSlots.publisherId, publisher.id),
         ),
       });
 

@@ -1,5 +1,5 @@
 import type { Request as ExRequest } from "express";
-import { Controller } from "tsoa"
+import { Controller } from "tsoa";
 
 import type {
   Adx402AsyncPaginatedResponse,

@@ -8,4 +8,4 @@ export { impressions } from "./impressions";
 export { publishers } from "./publishers";
 export { settlements } from "./settlements";
 
-export * from "./relations"
+export * from "./relations";

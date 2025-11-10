@@ -12,24 +12,25 @@ const consoleTransport = new winston.transports.Console({
   format: winston.format.combine(
     ...(env.APP_ENV === "production"
       ? [
-        // Production: no color, structured logs for Cloud Run
-        winston.format.printf(({ level, message, ...meta }) => {
-          return JSON.stringify({
-            severity: level,
-            message,
-            ...meta,
-          });
-        }),
-      ]
+          // Production: no color, structured logs for Cloud Run
+          winston.format.printf(({ level, message, ...meta }) => {
+            return JSON.stringify({
+              severity: level,
+              message,
+              ...meta,
+            });
+          }),
+        ]
       : [
-        winston.format.colorize(),
-        winston.format.timestamp({ format: "YYYY-MM-DD HH:mm:ss" }),
-        winston.format.printf(({ level, message, ...meta }) => {
-          delete meta.timestamp;
-          return `[${level}] ${message} ${Object.keys(meta).length ? JSON.stringify(meta, null, 2) : ""
+          winston.format.colorize(),
+          winston.format.timestamp({ format: "YYYY-MM-DD HH:mm:ss" }),
+          winston.format.printf(({ level, message, ...meta }) => {
+            delete meta.timestamp;
+            return `[${level}] ${message} ${
+              Object.keys(meta).length ? JSON.stringify(meta, null, 2) : ""
             }`;
-        }),
-      ]),
+          }),
+        ]),
   ),
 });
 

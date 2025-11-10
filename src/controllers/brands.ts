@@ -11,7 +11,7 @@ import {
 
 import { brandAdPostHandler } from "../handlers/brands";
 import { adx402MiddlewareFactory } from "../middlewares/Adx402Payment";
-import type { Adx402Request } from "../models/request"
+import type { Adx402Request } from "../models/request";
 
 @Route("brand")
 export class BrandController extends Controller {
@@ -24,7 +24,7 @@ export class BrandController extends Controller {
   public async uploadAd(
     @Request() req: Adx402Request,
     @Query() wallet: string,
-    @UploadedFile() file: Express.Multer.File
+    @UploadedFile() file: Express.Multer.File,
   ): Promise<{ message: string; fileName: string }> {
     console.log("Ad uploaded by wallet:", req.query.wallet);
 
