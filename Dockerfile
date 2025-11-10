@@ -70,4 +70,4 @@ EXPOSE 8080
 ENTRYPOINT ["dumb-init", "--"]
 
 # Command to start the application
-CMD ["node", "--import", "/app/build/instrument.js", "/app/build/server.js"]
+CMD ["node", "/app/build/server.js"]

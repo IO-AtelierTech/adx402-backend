@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "concurrently \"tsoa spec-and-routes\" \"nodemon\"",
-    "build": "tsc",
+    "build": "tsoa spec-and-routes && tsc",
     "tsoa:routes": "tsoa routes && tsoa spec",
-    "start": "node dist/server.js",
-    "migrate:up": "drizzle-kit migrate:up",
+    "start": "node build/server.js",
+    "start:prod": "NODE_ENV=production node build/server.js",
+    "migrate:up": "drizzle-kit migrate",
     "migrate:generate": "drizzle-kit generate",
     "lint": "eslint . --ext .ts,.tsx",
     "format": "prettier --write --list-different ."
