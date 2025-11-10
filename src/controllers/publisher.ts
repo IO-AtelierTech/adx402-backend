@@ -1,3 +1,5 @@
+import { and, eq, gt, sql } from "drizzle-orm";
+import type { Request as ExRequest } from "express";
 import {
   Body,
   Get,
@@ -8,22 +10,20 @@ import {
   SuccessResponse,
   Tags,
 } from "tsoa";
-import { eq, and, gt, sql } from "drizzle-orm";
-import type { Request as ExRequest } from "express";
 
 import { db } from "../db/client";
-import { ads, adSlots, publishers, impressions, clicks } from "../db/schema";
-import type { Adx402AsyncResponse } from "../models/response";
-import { Adx402Error } from "../models/response";
+import { ads, adSlots, clicks, impressions, publishers } from "../db/schema";
 import type {
   AdResponse,
-  TrackImpressionRequest,
-  TrackClickRequest,
-  CreatePublisherRequest,
-  CreateAdSlotRequest,
-  PublisherResponse,
   AdSlotResponse,
+  CreateAdSlotRequest,
+  CreatePublisherRequest,
+  PublisherResponse,
+  TrackClickRequest,
+  TrackImpressionRequest,
 } from "../models/publisher";
+import type { Adx402AsyncResponse } from "../models/response";
+import { Adx402Error } from "../models/response";
 import Adx402Controller from "../utils/response";
 
 @Route("publisher")
@@ -66,7 +66,7 @@ export class PublisherController extends Adx402Controller {
           message: "Ad slot not found",
         });
       }
-      
+
       // Find an appropriate ad
       const whereConditions = [
         gt(ads.creditBalance, 0),

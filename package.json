@@ -21,11 +21,13 @@
     "express": "^5.1.0",
     "js-yaml": "^4.1.0",
     "morgan": "^1.10.0",
+    "multer": "^2.0.2",
     "pg": "^8.11.0",
     "swagger-ui-express": "^5.0.1",
     "tsoa": "^6.6.0",
     "winston": "^3.18.3",
     "winston-daily-rotate-file": "^5.0.0",
+    "x402-express": "^0.7.1",
     "zod": "^4.1.12"
   },
   "devDependencies": {
@@ -34,6 +36,7 @@
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.5",
     "@types/js-yaml": "^4",
+    "@types/multer": "^2.0.0",
     "@types/node": "^24.10.0",
     "@types/pg": "^8.15.6",
     "@types/swagger-ui-express": "^4.1.8",

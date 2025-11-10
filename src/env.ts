@@ -1,8 +1,5 @@
 import dotenv from "dotenv";
 import { z } from "zod";
-
-import logger from "./utils/logger"
-
 dotenv.config();
 
 const EnvSchema = z.object({
@@ -20,13 +17,14 @@ const EnvSchema = z.object({
         throw new Error("PORT must be a positive number");
       }
       return num;
-    })
+    }),
+  MASTER_WALLET: z.string().min(1, "MASTER_WALLET is required"),
 })
 
 const _env = EnvSchema.safeParse(process.env);
 
 if (!_env.success) {
-  logger.error("❌ Invalid environment variables:", _env.error.format());
+  console.error("❌ Invalid environment variables:", _env.error.format());
   process.exit(1);
 }
 
