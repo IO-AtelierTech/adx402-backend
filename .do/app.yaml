@@ -1,10 +1,10 @@
 name: adx402-backend
 
 domains:
-- domain: adx402-api.ateliertech.xyz
-  type: PRIMARY
-  wildcard: false
-  zone: ateliertech.xyz
+  - domain: adx402-api.ateliertech.xyz
+    type: PRIMARY
+    wildcard: false
+    zone: ateliertech.xyz
 
 services:
   - name: api
