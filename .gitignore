@@ -143,3 +143,4 @@ src/routes.ts
 .sentryclirc
 
 drizzle/migrations/
+google-key-vision.json
