@@ -8,10 +8,10 @@ import {
   SuccessResponse,
   UploadedFile,
 } from "tsoa";
-import { z } from "zod"
+import { z } from "zod";
 
-import { db, supabase } from "../db/client"
-import { ads } from "../db/schema"
+import { db, supabase } from "../db/client";
+import { ads } from "../db/schema";
 import { brandAdPostHandler } from "../handlers/brands";
 import { adx402MiddlewareFactory } from "../middlewares/Adx402Payment";
 import type { Adx402Request } from "../models/request";
@@ -24,13 +24,14 @@ const payloadSchema = z.object({
     .string()
     .regex(/^[A-Za-z0-9]+$/, { message: "Wallet must be alphanumeric" }),
   tags: z
-    .array(z
-      .string()
-      .regex(/^[A-Za-z][A-Za-z0-9]{0,9}$/, {
+    .array(
+      z.string().regex(/^[A-Za-z][A-Za-z0-9]{0,9}$/, {
         message:
           "Each tag must start with a letter, be alphanumeric and max length 10",
-      }))
-    .max(8, { message: "At most 8 tags are allowed" }).optional(),
+      }),
+    )
+    .max(8, { message: "At most 8 tags are allowed" })
+    .optional(),
   targetUrl: z.url().optional(),
 });
 
@@ -120,7 +121,7 @@ export class BrandController extends Adx402Controller {
         message: "Ad successfully uploaded and pending moderation.",
         fileName: file.originalname,
         imageUrl: publicUrl,
-      }
-    })
+      };
+    });
   }
 }
