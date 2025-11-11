@@ -1,3 +1,5 @@
+import "./jobs/adModerationJob"
+
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import type {
@@ -29,7 +31,7 @@ app.use(
   cors({
     origin: (origin, callback) => callback(null, origin || "*"),
     credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"],
+    methods: ["GET", "POST"],
     allowedHeaders: [
       "Content-Type",
       "Authorization",
@@ -47,7 +49,7 @@ app.use(
 // app.use(express.json());
 
 // Root endpoint
-app.get("/", (req, res) => {
+app.get("/", (_req, res) => {
   res.status(200).json({
     message: "Adx402 API, by IO AtelierTech",
     version: "1.0.0",
@@ -59,7 +61,7 @@ app.get("/", (req, res) => {
  * Route to serve the OpenAPI specification in YAML format.
  * This route is not part of the TSOA-generated documentation.
  */
-app.get("/openapi.yaml", async (req: ExRequest, res: ExResponse) => {
+app.get("/openapi.yaml", async (_req: ExRequest, res: ExResponse) => {
   try {
     const swaggerJsonPath = path.resolve(
       process.cwd(),
