@@ -18,6 +18,8 @@ const EnvSchema = z.object({
     }),
   MASTER_WALLET: z.string().min(1, "MASTER_WALLET is required"),
   GOOGLE_KEY_PATH: z.string().min(1, "GOOGLE_KEY_PATH is required"),
+  SUPABASE_URL: z.string().min(1, "SUPABASE_URL is required"),
+  SUPABASE_SECRET_KEY: z.string().min(1, "SUPABASE_SECRET_KEY is required")
 });
 
 const _env = EnvSchema.safeParse(process.env);

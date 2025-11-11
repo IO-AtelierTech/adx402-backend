@@ -3736,6 +3736,67 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@supabase/auth-js@npm:2.81.0":
+  version: 2.81.0
+  resolution: "@supabase/auth-js@npm:2.81.0"
+  dependencies:
+    tslib: "npm:2.8.1"
+  checksum: 10c0/9107136868449727c1f007ca66d02d74e0124167a5a30899d463e4703c8fb552a5693356a74b6fedf5b351a20a248365cf06f37221615bc813b08495b1b6e715
+  languageName: node
+  linkType: hard
+
+"@supabase/functions-js@npm:2.81.0":
+  version: 2.81.0
+  resolution: "@supabase/functions-js@npm:2.81.0"
+  dependencies:
+    tslib: "npm:2.8.1"
+  checksum: 10c0/5f8b11684b34243a794a88cf88535b0585bd859637adae12c8beb67cccfff6f7e167ac1cf739678e32cfaf31305a436fead6f62deeed611d8f5637b283606344
+  languageName: node
+  linkType: hard
+
+"@supabase/postgrest-js@npm:2.81.0":
+  version: 2.81.0
+  resolution: "@supabase/postgrest-js@npm:2.81.0"
+  dependencies:
+    tslib: "npm:2.8.1"
+  checksum: 10c0/d1b5204cd1a06b70bf6e335dbaf5447de533590621e5d20d186dca009443d316f784d4370ff4385441f05de20a5f3b57d5838645b3b35819814a50b6d5260ccd
+  languageName: node
+  linkType: hard
+
+"@supabase/realtime-js@npm:2.81.0":
+  version: 2.81.0
+  resolution: "@supabase/realtime-js@npm:2.81.0"
+  dependencies:
+    "@types/phoenix": "npm:^1.6.6"
+    "@types/ws": "npm:^8.18.1"
+    tslib: "npm:2.8.1"
+    ws: "npm:^8.18.2"
+  checksum: 10c0/341cd0fd8b49bca493f9e4f1b26613da638a674e653079e2cc77296c7dda62c12602ccdf38abd315c43b4fc8f6d963b2cc4887ae202a16a598ebdeed13171900
+  languageName: node
+  linkType: hard
+
+"@supabase/storage-js@npm:2.81.0":
+  version: 2.81.0
+  resolution: "@supabase/storage-js@npm:2.81.0"
+  dependencies:
+    tslib: "npm:2.8.1"
+  checksum: 10c0/c462b0249f186cf1554a17209e7ce0b85ee61908c3f464d3f46c1e6962c0664b80942b21b3cdea5a2bb9b06e4832ad0b1ff36523c5eb39bb414bf0d439a6cd76
+  languageName: node
+  linkType: hard
+
+"@supabase/supabase-js@npm:^2.81.0":
+  version: 2.81.0
+  resolution: "@supabase/supabase-js@npm:2.81.0"
+  dependencies:
+    "@supabase/auth-js": "npm:2.81.0"
+    "@supabase/functions-js": "npm:2.81.0"
+    "@supabase/postgrest-js": "npm:2.81.0"
+    "@supabase/realtime-js": "npm:2.81.0"
+    "@supabase/storage-js": "npm:2.81.0"
+  checksum: 10c0/bf8dd6d52c8b34a44cb910a02ec2b686d08d571a17a194bde30b41babd97aee8913a9e4f56df218d8864737e0c57b39d1f5ab36c9fb30f85654712c098fb844a
+  languageName: node
+  linkType: hard
+
 "@swc/helpers@npm:^0.5.11":
   version: 0.5.17
   resolution: "@swc/helpers@npm:0.5.17"
@@ -4145,6 +4206,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/phoenix@npm:^1.6.6":
+  version: 1.6.6
+  resolution: "@types/phoenix@npm:1.6.6"
+  checksum: 10c0/4dfcb3fd36341ed5500de030291af14163c599857e00d2d4ff065d4c4600317d5d20aa170913fb9609747a09436e3add44db7d0c709bdf80f36cddcc67a42021
+  languageName: node
+  linkType: hard
+
 "@types/qs@npm:*":
   version: 6.14.0
   resolution: "@types/qs@npm:6.14.0"
@@ -4260,7 +4328,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/ws@npm:^8.2.2":
+"@types/ws@npm:^8.18.1, @types/ws@npm:^8.2.2":
   version: 8.18.1
   resolution: "@types/ws@npm:8.18.1"
   dependencies:
@@ -5153,6 +5221,7 @@ __metadata:
   resolution: "adx402-backend@workspace:."
   dependencies:
     "@google-cloud/vision": "npm:^5.3.4"
+    "@supabase/supabase-js": "npm:^2.81.0"
     "@tsoa/cli": "npm:^6.6.0"
     "@tsoa/runtime": "npm:^6.6.0"
     "@types/cookie-parser": "npm:^1.4.10"
@@ -12650,7 +12719,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tslib@npm:^2.0.0, tslib@npm:^2.1.0, tslib@npm:^2.4.0, tslib@npm:^2.6.0, tslib@npm:^2.8.0":
+"tslib@npm:2.8.1, tslib@npm:^2.0.0, tslib@npm:^2.1.0, tslib@npm:^2.4.0, tslib@npm:^2.6.0, tslib@npm:^2.8.0":
   version: 2.8.1
   resolution: "tslib@npm:2.8.1"
   checksum: 10c0/9c4759110a19c53f992d9aae23aac5ced636e99887b51b9e61def52611732872ff7668757d4e4c61f19691e36f4da981cd9485e869b4a7408d689f6bf1f14e62
@@ -13509,7 +13578,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ws@npm:8.18.3, ws@npm:^8.5.0":
+"ws@npm:8.18.3, ws@npm:^8.18.2, ws@npm:^8.5.0":
   version: 8.18.3
   resolution: "ws@npm:8.18.3"
   peerDependencies:
