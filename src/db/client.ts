@@ -1,3 +1,4 @@
+import { createClient } from "@supabase/supabase-js";
 import { drizzle } from "drizzle-orm/node-postgres";
 import { Pool } from "pg";
 
@@ -13,5 +14,10 @@ export const pool = new Pool({
     rejectUnauthorized: false,
   },
 });
+
+export const supabase = createClient(
+  env.SUPABASE_URL,
+  env.SUPABASE_SECRET_KEY
+);
 
 export const db = drizzle(pool, { schema /* logger: true */ });
