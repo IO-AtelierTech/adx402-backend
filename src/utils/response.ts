@@ -102,16 +102,16 @@ export default class Adx402Controller extends Controller {
       } else {
         const status = 500;
         this.setStatus(status);
-        
+
         // Log the full error details server-side for debugging
         logger.error("Internal server error", {
           path: req.route?.path || req.url,
           method: req.method,
           error: err.message,
           stack: err.stack,
-          timestamp: new Date().toISOString()
+          timestamp: new Date().toISOString(),
         });
-        
+
         // Return sanitized error message to client
         return createErrorResponse({
           code: "INTERNAL_SERVER_ERROR",
@@ -137,16 +137,16 @@ export default class Adx402Controller extends Controller {
       } else {
         const status = 500;
         this.setStatus(status);
-        
+
         // Log the full error details server-side for debugging
         logger.error("Internal server error", {
           path: req.route?.path || req.url,
           method: req.method,
           error: err.message,
           stack: err.stack,
-          timestamp: new Date().toISOString()
+          timestamp: new Date().toISOString(),
         });
-        
+
         // Return sanitized error message to client
         return createPaginatedErrorResponse({
           code: "INTERNAL_SERVER_ERROR",
