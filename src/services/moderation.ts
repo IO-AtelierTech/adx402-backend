@@ -2,11 +2,14 @@ import { eq } from "drizzle-orm";
 
 import { db } from "../db/client";
 import { ads } from "../db/schema/ads";
-import logger from "../utils/logger"
+import logger from "../utils/logger";
 import { moderateImage } from "../utils/visionClient";
 
 export async function processPendingAds() {
-  const pendingAds = await db.select().from(ads).where(eq(ads.moderationStatus, "pending"));
+  const pendingAds = await db
+    .select()
+    .from(ads)
+    .where(eq(ads.moderationStatus, "pending"));
 
   if (pendingAds.length === 0) {
     logger.info("✅ No pending ads to moderate.");
@@ -26,9 +29,9 @@ export async function processPendingAds() {
         .set({ moderationStatus: newStatus })
         .where(eq(ads.id, ad.id));
 
-      if (newStatus == 'rejected') {
+      if (newStatus == "rejected") {
         logger.info(
-          `→ Ad ${ad.id} (${ad.imageUrl}) marked as ${newStatus} (${result.reason})`
+          `→ Ad ${ad.id} (${ad.imageUrl}) marked as ${newStatus} (${result.reason})`,
         );
       }
     } catch (err) {
