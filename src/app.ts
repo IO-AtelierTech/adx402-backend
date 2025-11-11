@@ -1,5 +1,5 @@
 import cookieParser from "cookie-parser";
-import cors from "cors"
+import cors from "cors";
 import type {
   ErrorRequestHandler,
   NextFunction,
@@ -23,11 +23,12 @@ app.use(
   }),
 );
 
+app.use(express.json());
 app.use(cookieParser());
 
 app.use(
   cors({
-    origin: (origin, callback) => callback(null, origin || '*'),
+    origin: (origin, callback) => callback(null, origin || "*"),
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"],
     allowedHeaders: [
@@ -80,22 +81,40 @@ app.get("/openapi.yaml", async (req: ExRequest, res: ExResponse) => {
 });
 
 app.use("/docs", swaggerUi.serve, async (_req: ExRequest, res: ExResponse) => {
-  const swaggerOptions = {
-    swaggerOptions: {
-      requestInterceptor: (request: any) => {
-        request.credentials = "include";
-        return request;
-      },
-      persistAuthorization: true,
-    },
-  };
+  try {
+    const swaggerJsonPath = path.resolve(
+      process.cwd(),
+      "build",
+      "swagger.json",
+    );
+    const jsonContent = await fs.readFile(swaggerJsonPath, "utf8");
+    const swaggerDocument = JSON.parse(jsonContent);
 
-  res.send(
-    swaggerUi.generateHTML(
-      await import("../build/swagger.json"),
-      swaggerOptions,
-    ),
-  );
+    const swaggerOptions = {
+      swaggerOptions: {
+        requestInterceptor: (request: any) => {
+          request.credentials = "include";
+          return request;
+        },
+        persistAuthorization: true,
+      },
+    };
+
+    res.send(
+      swaggerUi.generateHTML(
+        swaggerDocument, // Use the parsed object instead of dynamic import
+        swaggerOptions,
+      ),
+    );
+  } catch (error: any) {
+    // Log the error and respond gracefully if the swagger file cannot be loaded
+    logger.error(
+      `❌ Unhandled error for /docs/ (Swagger file load): ${error.message}`,
+    );
+    res
+      .status(500)
+      .send("Error: Could not load the API specification for documentation.");
+  }
 });
 
 RegisterRoutes(app);

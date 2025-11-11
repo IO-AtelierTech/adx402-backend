@@ -22,7 +22,7 @@ export const brandAdPostHandler = async (req: Request) => {
   //}
 
   const config = {
-    description: `Fee to post an ad as a brand`
+    description: `Fee to post an ad as a brand`,
   };
 
   // Optionally, adjust price based on user or file

@@ -1,4 +1,4 @@
-import app from "./app"
+import app from "./app";
 import { pool } from "./db/client";
 import env from "./env";
 import logger from "./utils/logger";

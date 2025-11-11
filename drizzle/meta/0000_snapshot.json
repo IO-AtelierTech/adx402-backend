@@ -27,9 +27,7 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {
         "ad_tags_tag_key": {
-          "columns": [
-            "tag"
-          ],
+          "columns": ["tag"],
           "nullsNotDistinct": false,
           "name": "ad_tags_tag_key"
         }
@@ -94,12 +92,8 @@
           "tableFrom": "impressions",
           "tableTo": "ads",
           "schemaTo": "public",
-          "columnsFrom": [
-            "ad_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["ad_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -108,12 +102,8 @@
           "tableFrom": "impressions",
           "tableTo": "publishers",
           "schemaTo": "public",
-          "columnsFrom": [
-            "publisher_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["publisher_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         },
@@ -122,12 +112,8 @@
           "tableFrom": "impressions",
           "tableTo": "ad_slots",
           "schemaTo": "public",
-          "columnsFrom": [
-            "slot_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["slot_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -161,9 +147,7 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {
         "aspect_ratios_aspect_ratio_key": {
-          "columns": [
-            "aspect_ratio"
-          ],
+          "columns": ["aspect_ratio"],
           "nullsNotDistinct": false,
           "name": "aspect_ratios_aspect_ratio_key"
         }
@@ -204,12 +188,8 @@
           "tableFrom": "clicks",
           "tableTo": "impressions",
           "schemaTo": "public",
-          "columnsFrom": [
-            "impression_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["impression_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -282,16 +262,12 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {
         "publishers_wallet_address_key": {
-          "columns": [
-            "wallet_address"
-          ],
+          "columns": ["wallet_address"],
           "nullsNotDistinct": false,
           "name": "publishers_wallet_address_key"
         },
         "publishers_domain_key": {
-          "columns": [
-            "domain"
-          ],
+          "columns": ["domain"],
           "nullsNotDistinct": false,
           "name": "publishers_domain_key"
         }
@@ -350,12 +326,8 @@
           "tableFrom": "ad_slots",
           "tableTo": "publishers",
           "schemaTo": "public",
-          "columnsFrom": [
-            "publisher_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["publisher_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -434,12 +406,8 @@
           "tableFrom": "settlements",
           "tableTo": "publishers",
           "schemaTo": "public",
-          "columnsFrom": [
-            "publisher_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["publisher_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -493,9 +461,7 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {
         "brands_wallet_address_key": {
-          "columns": [
-            "wallet_address"
-          ],
+          "columns": ["wallet_address"],
           "nullsNotDistinct": false,
           "name": "brands_wallet_address_key"
         }
@@ -591,12 +557,8 @@
           "tableFrom": "ads",
           "tableTo": "brands",
           "schemaTo": "public",
-          "columnsFrom": [
-            "brand_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["brand_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }

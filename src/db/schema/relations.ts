@@ -11,15 +11,15 @@ import { publishers } from "./publishers";
 export const impressionsRelations = relations(impressions, ({ one, many }) => ({
   ad: one(ads, {
     fields: [impressions.adId],
-    references: [ads.id]
+    references: [ads.id],
   }),
   publisher: one(publishers, {
     fields: [impressions.publisherId],
-    references: [publishers.id]
+    references: [publishers.id],
   }),
   adSlot: one(adSlots, {
     fields: [impressions.slotId],
-    references: [adSlots.id]
+    references: [adSlots.id],
   }),
   clicks: many(clicks),
 }));
@@ -28,7 +28,7 @@ export const adsRelations = relations(ads, ({ one, many }) => ({
   impressions: many(impressions),
   brand: one(brands, {
     fields: [ads.brandId],
-    references: [brands.id]
+    references: [brands.id],
   }),
 }));
 
@@ -42,21 +42,21 @@ export const adSlotsRelations = relations(adSlots, ({ one, many }) => ({
   impressions: many(impressions),
   publisher: one(publishers, {
     fields: [adSlots.publisherId],
-    references: [publishers.id]
+    references: [publishers.id],
   }),
 }));
 
 export const clicksRelations = relations(clicks, ({ one }) => ({
   impression: one(impressions, {
     fields: [clicks.impressionId],
-    references: [impressions.id]
+    references: [impressions.id],
   }),
 }));
 
 export const settlementsRelations = relations(settlements, ({ one }) => ({
   publisher: one(publishers, {
     fields: [settlements.publisherId],
-    references: [publishers.id]
+    references: [publishers.id],
   }),
 }));
 

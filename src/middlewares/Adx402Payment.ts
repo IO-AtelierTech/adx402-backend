@@ -12,7 +12,7 @@ type ActionHandler = (
 ) => Promise<{ price: string; config: Record<string, any> }>;
 
 export function adx402MiddlewareFactory(
-  actionHandler: ActionHandler
+  actionHandler: ActionHandler,
 ): RequestHandler {
   return async (req, res, next) => {
     try {
@@ -37,7 +37,9 @@ export function adx402MiddlewareFactory(
       return middleware(req, res, next);
     } catch (err) {
       logger.error("adx402 middleware error:", err);
-      return res.status(500).json({ error: "Internal payment middleware error" });
+      return res
+        .status(500)
+        .json({ error: "Internal payment middleware error" });
     }
   };
 }

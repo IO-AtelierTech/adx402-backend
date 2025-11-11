@@ -7,7 +7,14 @@ import importPlugin from "eslint-plugin-import";
 
 export default defineConfig([
   {
-    ignores: ["node_modules/**", "**/target/**", "dist", "dev_dist", "drizzle.config.ts", "drizzle/**"],
+    ignores: [
+      "node_modules/**",
+      "**/target/**",
+      "dist",
+      "dev_dist",
+      "drizzle.config.ts",
+      "drizzle/**",
+    ],
   },
   // Base config for all TS files anywhere in the repo
   {

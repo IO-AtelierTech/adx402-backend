@@ -1,9 +1,4 @@
-import {
-  Get,
-  Route,
-  SuccessResponse,
-  Tags,
-} from "tsoa";
+import { Get, Route, SuccessResponse, Tags } from "tsoa";
 
 import type { Adx402AsyncResponse } from "../models/response";
 import Adx402Controller, { createSuccessResponse } from "../utils/response";
