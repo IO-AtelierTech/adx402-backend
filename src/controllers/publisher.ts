@@ -1,4 +1,4 @@
-import { and, eq, gt, sql } from "drizzle-orm";
+import { and, arrayOverlaps, eq, gt, inArray, sql } from "drizzle-orm";
 import type { Request as ExRequest } from "express";
 import {
   Body,
@@ -76,13 +76,11 @@ export class PublisherController extends Adx402Controller {
       ];
 
       if (adSlot.aspectRatios && adSlot.aspectRatios.length > 0) {
-        whereConditions.push(
-          sql`${ads.aspectRatio} = ANY(${adSlot.aspectRatios})`,
-        );
+        whereConditions.push(inArray(ads.aspectRatio, adSlot.aspectRatios));
       }
 
       if (adSlot.tags && adSlot.tags.length > 0) {
-        whereConditions.push(sql`${ads.tags} && ${adSlot.tags}`);
+        whereConditions.push(arrayOverlaps(ads.tags, adSlot.tags));
       }
 
       const availableAds = await db

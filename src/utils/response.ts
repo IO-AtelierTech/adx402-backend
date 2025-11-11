@@ -11,6 +11,7 @@ import type {
   PaginationInfo,
 } from "../models/response";
 import { Adx402Error } from "../models/response";
+import logger from "./logger";
 
 /**
  * Creates a standardized success response object.
@@ -101,9 +102,20 @@ export default class Adx402Controller extends Controller {
       } else {
         const status = 500;
         this.setStatus(status);
+
+        // Log the full error details server-side for debugging
+        logger.error("Internal server error", {
+          path: req.route?.path || req.url,
+          method: req.method,
+          error: err.message,
+          stack: err.stack,
+          timestamp: new Date().toISOString(),
+        });
+
+        // Return sanitized error message to client
         return createErrorResponse({
           code: "INTERNAL_SERVER_ERROR",
-          message: `Error occurred at '${req.route.path}': ${err.message || "Unknown error"}'`,
+          message: `An internal error occurred while processing your request at '${req.route?.path || req.url}'`,
           status,
         });
       }
@@ -125,9 +137,20 @@ export default class Adx402Controller extends Controller {
       } else {
         const status = 500;
         this.setStatus(status);
+
+        // Log the full error details server-side for debugging
+        logger.error("Internal server error", {
+          path: req.route?.path || req.url,
+          method: req.method,
+          error: err.message,
+          stack: err.stack,
+          timestamp: new Date().toISOString(),
+        });
+
+        // Return sanitized error message to client
         return createPaginatedErrorResponse({
           code: "INTERNAL_SERVER_ERROR",
-          message: `Error occurred at '${req.route.path}': ${err.message || "Unknown error"}'`,
+          message: `An internal error occurred while processing your request at '${req.route?.path || req.url}'`,
           status,
         });
       }

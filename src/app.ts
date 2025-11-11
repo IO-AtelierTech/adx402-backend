@@ -43,6 +43,7 @@ app.use(
       "Access-Control-Request-Headers",
       "Access-Control-Request-Method",
       // Custom x402 headers:
+      "X-Payment",
       "X-Payment-Response",
       "X-Transaction-Signature",
       "X-Payment-Request",
