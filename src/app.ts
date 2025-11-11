@@ -23,7 +23,7 @@ app.use(
   }),
 );
 
-app.use(express.json())
+app.use(express.json());
 app.use(cookieParser());
 
 app.use(
@@ -108,8 +108,12 @@ app.use("/docs", swaggerUi.serve, async (_req: ExRequest, res: ExResponse) => {
     );
   } catch (error: any) {
     // Log the error and respond gracefully if the swagger file cannot be loaded
-    logger.error(`❌ Unhandled error for /docs/ (Swagger file load): ${error.message}`);
-    res.status(500).send("Error: Could not load the API specification for documentation.");
+    logger.error(
+      `❌ Unhandled error for /docs/ (Swagger file load): ${error.message}`,
+    );
+    res
+      .status(500)
+      .send("Error: Could not load the API specification for documentation.");
   }
 });
 
