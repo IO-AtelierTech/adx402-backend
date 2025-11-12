@@ -1,4 +1,4 @@
-import { eq } from "drizzle-orm"
+import { eq } from "drizzle-orm";
 import {
   FormField,
   Middlewares,
@@ -44,7 +44,9 @@ export interface BrandRecord {
   createdAt: string | null;
 }
 
-export async function getBrandByWallet(wallet: string): Promise<BrandRecord | null> {
+export async function getBrandByWallet(
+  wallet: string,
+): Promise<BrandRecord | null> {
   const result = await db
     .select()
     .from(brands)
@@ -54,7 +56,10 @@ export async function getBrandByWallet(wallet: string): Promise<BrandRecord | nu
   return result[0] ?? null;
 }
 
-export async function createBrand(wallet: string, name = "Unnamed Brand"): Promise<BrandRecord> {
+export async function createBrand(
+  wallet: string,
+  name = "Unnamed Brand",
+): Promise<BrandRecord> {
   const [brand] = await db
     .insert(brands)
     .values({
