@@ -1,3 +1,4 @@
+import { eq } from "drizzle-orm"
 import {
   FormField,
   Middlewares,
@@ -11,7 +12,7 @@ import {
 import { z } from "zod";
 
 import { db, supabase } from "../db/client";
-import { ads } from "../db/schema";
+import { ads, brands } from "../db/schema";
 import { brandAdPostHandler } from "../handlers/brands";
 import { adx402MiddlewareFactory } from "../middlewares/Adx402Payment";
 import type { Adx402Request } from "../models/request";
@@ -34,6 +35,44 @@ const payloadSchema = z.object({
     .optional(),
   targetUrl: z.url().optional(),
 });
+
+export interface BrandRecord {
+  id: string;
+  walletAddress: string;
+  name: string;
+  status: string | null;
+  createdAt: string | null;
+}
+
+export async function getBrandByWallet(wallet: string): Promise<BrandRecord | null> {
+  const result = await db
+    .select()
+    .from(brands)
+    .where(eq(brands.walletAddress, wallet))
+    .limit(1);
+
+  return result[0] ?? null;
+}
+
+export async function createBrand(wallet: string, name = "Unnamed Brand"): Promise<BrandRecord> {
+  const [brand] = await db
+    .insert(brands)
+    .values({
+      walletAddress: wallet,
+      name,
+      status: "active",
+    })
+    .returning();
+
+  return brand;
+}
+
+export async function ensureBrand(wallet: string): Promise<BrandRecord> {
+  const existing = await getBrandByWallet(wallet);
+  if (existing) return existing;
+
+  return await createBrand(wallet);
+}
 
 @Route("brand")
 export class BrandController extends Adx402Controller {
@@ -104,7 +143,7 @@ export class BrandController extends Adx402Controller {
 
       // 6️⃣ Insert into ads table
       const newAd = {
-        brandId: `brand-${validated.wallet}`, // TODO: link to brand via wallet once auth implemented
+        brandId: (await ensureBrand(validated.wallet)).id,
         imageUrl: publicUrl,
         targetUrl: validated.targetUrl || "",
         tags: validated.tags || [],

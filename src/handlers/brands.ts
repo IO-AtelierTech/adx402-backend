@@ -1,13 +1,30 @@
+import { eq } from "drizzle-orm";
 import type { Request } from "express";
 
-import { getWalletInfo } from "../utils/mock";
+import { db } from "../db/client";
+import { brands } from "../db/schema";
+
+/**
+ * Fetch a brand by its wallet address.
+ * @param walletAddress The wallet address to look up.
+ * @returns The brand record, or null if not found.
+ */
+export async function getWalletInfo(walletAddress: string) {
+  const [brand] = await db
+    .select()
+    .from(brands)
+    .where(eq(brands.walletAddress, walletAddress))
+    .limit(1);
+
+  return brand ?? null;
+}
 
 export const brandAdPostHandler = async (req: Request) => {
   const action = req.path;
   if (action !== "/brand/ad") throw new Error("Invalid action");
 
   const wallet = req.query.wallet as string;
-  const user = await getWalletInfo(wallet);
+  const brand = await getWalletInfo(wallet);
   let price = "$0.0005"; // base fee
 
   // Require that a file was uploaded
@@ -26,7 +43,7 @@ export const brandAdPostHandler = async (req: Request) => {
   };
 
   // Optionally, adjust price based on user or file
-  if (!user) price = "$0.001"; // higher for new accounts
+  if (!brand) price = "$0.001"; // higher for new accounts
 
   return { price, config };
 };

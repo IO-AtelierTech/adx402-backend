@@ -15,6 +15,7 @@ export function adx402MiddlewareFactory(
   actionHandler: ActionHandler,
 ): RequestHandler {
   return async (req, res, next) => {
+    logger.info(`Received payment request\nREQ: ${JSON.stringify(req.headers, null, 2)}\nQUERY: ${JSON.stringify(req.query, null, 2)}\nBODY: ${JSON.stringify(req.body, null, 2)}`)
     try {
       const wallet = (req.query.wallet as string) || undefined;
       if (!wallet) {
