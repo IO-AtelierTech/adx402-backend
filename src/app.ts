@@ -61,8 +61,6 @@ app.use(
   }),
 );
 
-// app.use(express.json());
-
 // Root endpoint
 app.get("/", (_req, res) => {
   res.status(200).json({
