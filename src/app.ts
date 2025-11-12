@@ -35,7 +35,7 @@ app.use(
       if (!origin) return callback(null, true); // allow non-browser tools
       const allowed = [
         "https://adx402.ateliertech.xyz",
-        "http://localhost:5173"
+        "http://localhost:5173",
       ];
       if (allowed.includes(origin)) {
         callback(null, true);
