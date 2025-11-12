@@ -27,24 +27,10 @@ app.use(
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 
 app.use(
   cors({
-    origin: (origin, callback) => {
-      if (!origin) return callback(null, true); // allow non-browser tools
-      const allowed = [
-        "https://adx402.ateliertech.xyz",
-        "http://localhost:5173"
-      ];
-      if (allowed.includes(origin)) {
-        callback(null, true);
-      } else {
-        logger.warn(`CORS blocked origin: ${origin}`);
-        // For production, block unknown origins:
-        callback(new Error(`CORS policy violation: ${origin} not allowed`));
-      }
-    },
+    origin: (origin, callback) => callback(null, origin || "*"),
     credentials: true,
     methods: ["GET", "POST", "OPTIONS"],
     allowedHeaders: [
