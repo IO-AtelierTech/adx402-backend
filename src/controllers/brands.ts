@@ -26,9 +26,9 @@ const payloadSchema = z.object({
     .regex(/^[A-Za-z0-9]+$/, { message: "Wallet must be alphanumeric" }),
   tags: z
     .array(
-      z.string().regex(/^[A-Za-z][A-Za-z0-9]{0,9}$/, {
+      z.string().regex(/^[A-Za-z][A-Za-z0-9]{0,15}$/, {
         message:
-          "Each tag must start with a letter, be alphanumeric and max length 10",
+          "Each tag must start with a letter, be alphanumeric and max length 16",
       }),
     )
     .max(8, { message: "At most 8 tags are allowed" })
